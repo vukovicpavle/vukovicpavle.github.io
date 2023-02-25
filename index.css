@@ -11,6 +11,16 @@ body {
   align-items: center;
 }
 
+.logo {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+  animation-name: scale-up;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+}
+
 .hello {
   font-size: 1.5rem;
 }
@@ -31,7 +41,26 @@ body {
 
 .emojis {
   font-size: 1.8rem;
-  /* Float animation */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.emoji {
+  margin: 0 0.5rem;
+  position: absolute;
+  z-index: -1;
+  opacity: 0.2;
+  animation-name: float-animation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.float {
   animation-name: float-animation;
   animation-duration: 2s;
   animation-iteration-count: infinite;
@@ -40,6 +69,8 @@ body {
 
 .message {
   font-size: 1rem;
+  font-family: "Courier New", Courier, monospace;
+  margin-top: 3rem;
 }
 
 /* Animations */
@@ -62,9 +93,19 @@ body {
     transform: translatey(0px);
   }
   50% {
-    transform: translatey(-10px);
+    transform: translatey(-5px);
   }
   100% {
     transform: translatey(0px);
+  }
+}
+
+/* Scale up */
+@keyframes scale-up {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
   }
 }
