@@ -47,6 +47,7 @@ body {
   position: absolute;
   height: 100%;
   width: 100%;
+  z-index: -1;
 }
 
 .emoji {
@@ -70,7 +71,12 @@ body {
 .message {
   font-size: 1rem;
   font-family: "Courier New", Courier, monospace;
-  margin-top: 3rem;
+  /* margin-top: 3rem; */
+}
+
+a {
+  color: #ecf40b;
+  text-decoration: none;
 }
 
 /* Animations */
