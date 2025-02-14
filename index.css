@@ -690,3 +690,37 @@ ol ol {
     font-size: 0.875rem;
   }
 }
+
+/* Icon styling */
+.with-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: var(--light-text);
+  opacity: 0.6;
+  transition: var(--transition);
+}
+
+/* Icons in links */
+a.with-icon:hover .icon {
+  color: var(--accent-color);
+  opacity: 1;
+}
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+  .icon {
+    opacity: 0.5;
+  }
+
+  a.with-icon:hover .icon {
+    color: #ffd700;
+    opacity: 1;
+  }
+}
