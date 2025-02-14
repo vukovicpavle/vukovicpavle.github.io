@@ -15,8 +15,12 @@
   --light-text: #86868b;
   --background-color: #ffffff;
   --sidebar-background: #f8f8f8;
-  --accent-color: #0071e3;
-  --accent-gradient: linear-gradient(135deg, #0071e3 0%, #47a3ff 100%);
+  --accent-color: #b8860b; /* Dark golden color */
+  --accent-gradient: linear-gradient(
+    135deg,
+    #daa520 0%,
+    #b8860b 100%
+  ); /* Golden gradient */
   --transition: all 0.3s ease;
   --subtle-border: rgba(0, 0, 0, 0.08);
 }
@@ -127,7 +131,7 @@ a {
 }
 
 a:hover {
-  color: var(--primary-color);
+  color: #daa520; /* Lighter gold on hover */
 }
 
 .button {
@@ -141,7 +145,7 @@ a:hover {
 }
 
 .button:hover {
-  background-color: #0077ed;
+  background-color: #daa520;
   transform: translateY(-1px);
 }
 
@@ -219,7 +223,7 @@ ol ol {
 
 .language-progress {
   height: 100%;
-  background: var(--accent-color);
+  background: var(--accent-gradient);
   border-radius: 2px;
   transition: var(--transition);
 }
@@ -412,7 +416,7 @@ ol ol {
   font-size: 0.75rem;
   padding: 0.25rem 0.75rem;
   border-radius: 6px;
-  background: var(--accent-color);
+  background: var(--accent-gradient);
   color: white;
   font-weight: 500;
 }
