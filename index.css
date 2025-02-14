@@ -172,6 +172,23 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  position: relative;
+  display: inline-block;
+}
+
+.main-content h2::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-gradient);
+  transition: width 0.3s ease;
+}
+
+.main-content h2:hover::after {
+  width: 100%;
 }
 
 /* Typography styles */
@@ -403,6 +420,11 @@ ol ol {
   background-repeat: no-repeat;
   filter: brightness(0) saturate(100%) invert(45%) sepia(19%) saturate(1966%)
     hue-rotate(16deg) brightness(92%) contrast(96%);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.profile-logo:hover {
+  transform: scale(1.05) rotate(5deg);
 }
 
 /* Dark theme adjustment */
@@ -471,6 +493,31 @@ ol ol {
   padding: 1.75rem;
   border: 1px solid var(--subtle-border);
   transition: var(--transition);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add delay for each card */
+.project-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.project-card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.project-card:nth-child(4) {
+  animation-delay: 0.3s;
 }
 
 .project-card:hover {
@@ -511,6 +558,8 @@ ol ol {
   border-radius: 4px;
   font-weight: 450;
   transition: var(--transition);
+  transform-origin: center;
+  transition: all 0.2s ease;
 }
 
 .tag {
@@ -522,6 +571,7 @@ ol ol {
 .tag:hover {
   background: rgba(184, 134, 11, 0.06);
   border-color: rgba(184, 134, 11, 0.15);
+  transform: scale(1.05);
 }
 
 .tech-tag {
@@ -533,6 +583,11 @@ ol ol {
 .tech-tag:hover {
   background: rgba(184, 134, 11, 0.12);
   border-color: rgba(184, 134, 11, 0.25);
+  transform: scale(1.05);
+}
+
+.tech-tag:active {
+  transform: scale(0.95);
 }
 
 /* Dark theme adjustments */
@@ -580,14 +635,32 @@ ol ol {
   }
 }
 
-/* Experience styles */
+/* Experience timeline styles */
 .experiences {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.experiences::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--accent-color) 10%,
+    var(--accent-color) 90%,
+    transparent
+  );
+  opacity: 0.2;
 }
 
 .experience-card {
+  position: relative;
+  margin-bottom: 2.5rem;
   border: 1px solid var(--subtle-border);
   border-radius: 12px;
   padding: 1.75rem;
@@ -595,99 +668,98 @@ ol ol {
   transition: var(--transition);
 }
 
-.experience-card:hover {
-  background-color: var(--sidebar-background);
-}
-
-.experience-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1.25rem;
-}
-
-.experience-title h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.35rem;
-  color: var(--text-color);
-  letter-spacing: -0.01em;
-}
-
-.experience-company {
-  font-size: 0.9375rem;
-  color: var(--accent-color);
-  font-weight: 500;
-}
-
-.experience-duration {
-  font-size: 0.6875rem;
-  color: var(--accent-color);
-  font-weight: 450;
-  letter-spacing: 0.05em;
-  padding: 0.2rem 0.625rem;
-  background: rgba(184, 134, 11, 0.03);
-  border: 1px solid rgba(184, 134, 11, 0.1);
-  border-radius: 4px;
-  transition: var(--transition);
-}
-
-.experience-duration:hover {
-  background: rgba(184, 134, 11, 0.06);
-  border-color: rgba(184, 134, 11, 0.15);
-}
-
-.experience-list {
-  margin: 0;
-  padding: 0;
-}
-
-.experience-list li {
-  position: relative;
-  padding-left: 1.25rem;
-  margin-bottom: 0.75rem;
-  color: var(--light-text);
-  font-size: 0.9375rem;
-  line-height: 1.6;
-}
-
-.experience-list li::before {
-  content: "•";
-  display: block;
-  position: absolute;
-  left: 0;
-  color: var(--accent-color);
-  font-weight: bold;
-}
-
-.experience-list li:last-child {
+.experience-card:last-child {
   margin-bottom: 0;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .experience-header {
-    flex-direction: column;
-    gap: 0.75rem;
+.experience-card::before {
+  content: "";
+  position: absolute;
+  left: -2.5rem;
+  top: 2rem;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--background-color);
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 0 0 3px var(--background-color);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.experience-card::after {
+  content: "";
+  position: absolute;
+  left: -2.3rem;
+  top: 2.4rem;
+  width: 2rem;
+  height: 1px;
+  background: var(--accent-color);
+  opacity: 0.2;
+  transform: scaleX(0.5);
+  transform-origin: left;
+  transition: all 0.3s ease;
+}
+
+.experience-card:hover::before {
+  background: var(--accent-gradient);
+  border-color: transparent;
+  transform: scale(1.1);
+  box-shadow: 0 0 0 3px var(--background-color),
+    0 0 10px rgba(184, 134, 11, 0.3);
+}
+
+.experience-card:hover::after {
+  opacity: 0.6;
+  transform: scaleX(1);
+}
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+  .experiences::before {
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--accent-color) 10%,
+      var(--accent-color) 90%,
+      transparent
+    );
+    opacity: 0.15;
   }
 
-  .experience-duration {
-    font-size: 0.75rem;
+  .experience-card::before {
+    box-shadow: 0 0 0 3px var(--background-color);
+  }
+
+  .experience-card:hover::before {
+    box-shadow: 0 0 0 3px var(--background-color),
+      0 0 15px rgba(184, 134, 11, 0.4);
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .experiences {
+    padding-left: 2rem;
+  }
+
+  .experiences::before {
+    left: 5px;
   }
 
   .experience-card {
-    padding: 1.5rem;
+    margin-bottom: 2rem;
   }
 
-  .experience-title h3 {
-    font-size: 1.125rem;
+  .experience-card::before {
+    left: -2rem;
+    width: 11px;
+    height: 11px;
   }
 
-  .experience-company {
-    font-size: 0.875rem;
-  }
-
-  .experience-list li {
-    font-size: 0.875rem;
+  .experience-card::after {
+    left: -1.5rem;
+    width: 1.5rem;
   }
 }
 
@@ -722,5 +794,218 @@ a.with-icon:hover .icon {
   a.with-icon:hover .icon {
     color: #ffd700;
     opacity: 1;
+  }
+}
+
+/* Add progress bars to skills */
+.skill-bar {
+  width: 0;
+  height: 3px;
+  background: var(--accent-gradient);
+  border-radius: 2px;
+  margin-top: 0.25rem;
+  transition: width 0.8s ease;
+}
+
+.skill-item:hover .skill-bar {
+  width: 100%;
+}
+
+/* Scroll reveal animations */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Add view-transition properties */
+.main-content section {
+  margin-bottom: 3rem;
+  view-timeline-name: --section;
+  view-timeline-axis: block;
+  animation: slideInRight both;
+  animation-timeline: --section;
+  animation-range: entry 20% cover 30%;
+}
+
+/* Experience cards reveal */
+.experience-card {
+  /* ... existing styles ... */
+  view-timeline-name: --reveal;
+  view-timeline-axis: block;
+  animation: slideInLeft both;
+  animation-timeline: --reveal;
+  animation-range: entry 20% cover 30%;
+}
+
+/* Project cards reveal */
+.project-card {
+  /* ... existing styles ... */
+  view-timeline-name: --reveal;
+  view-timeline-axis: block;
+  animation: slideInRight both;
+  animation-timeline: --reveal;
+  animation-range: entry 20% cover 30%;
+}
+
+/* Fallback for browsers that don't support scroll-driven animations */
+@supports not (animation-timeline: view()) {
+  .main-content section,
+  .experience-card,
+  .project-card {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+/* Add smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Experience card content styles */
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+}
+
+.experience-title h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.35rem;
+  color: var(--text-color);
+  letter-spacing: -0.01em;
+}
+
+.experience-company {
+  font-size: 0.9375rem;
+  color: var(--accent-color);
+  font-weight: 500;
+  opacity: 0.9;
+  transition: var(--transition);
+}
+
+.experience-card:hover .experience-company {
+  opacity: 1;
+}
+
+.experience-duration {
+  font-size: 0.6875rem;
+  color: var(--accent-color);
+  font-weight: 450;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.625rem;
+  background: rgba(184, 134, 11, 0.03);
+  border: 1px solid rgba(184, 134, 11, 0.1);
+  border-radius: 4px;
+  transition: var(--transition);
+  opacity: 0.9;
+}
+
+.experience-card:hover .experience-duration {
+  background: rgba(184, 134, 11, 0.08);
+  border-color: rgba(184, 134, 11, 0.2);
+  opacity: 1;
+}
+
+.experience-list {
+  margin: 0;
+  padding: 0;
+}
+
+.experience-list li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--light-text);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  transition: var(--transition);
+}
+
+.experience-list li:last-child {
+  margin-bottom: 0;
+}
+
+.experience-list li::before {
+  content: "•";
+  display: block;
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+  font-weight: bold;
+  opacity: 0.8;
+  transition: var(--transition);
+}
+
+.experience-card:hover .experience-list li {
+  opacity: 1;
+}
+
+.experience-card:hover .experience-list li::before {
+  opacity: 1;
+}
+
+/* Dark theme adjustments for experience cards */
+@media (prefers-color-scheme: dark) {
+  .experience-duration {
+    background: rgba(184, 134, 11, 0.04);
+    border-color: rgba(184, 134, 11, 0.12);
+  }
+
+  .experience-card:hover .experience-duration {
+    background: rgba(184, 134, 11, 0.1);
+    border-color: rgba(184, 134, 11, 0.2);
+  }
+
+  .experience-list li::before {
+    opacity: 0.6;
+  }
+}
+
+/* Mobile adjustments for experience cards */
+@media (max-width: 768px) {
+  .experience-header {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .experience-duration {
+    font-size: 0.75rem;
+  }
+
+  .experience-card {
+    padding: 1.5rem;
+  }
+
+  .experience-title h3 {
+    font-size: 1.125rem;
+  }
+
+  .experience-company {
+    font-size: 0.875rem;
+  }
+
+  .experience-list li {
+    font-size: 0.875rem;
   }
 }
