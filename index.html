@@ -12,8 +12,8 @@
   <body>
     <div class="container">
       <aside class="sidebar">
-        <div>
-          <img src="img/logo.png" alt="Pavle Vuković" />
+        <div class="profile-header">
+          <img src="img/logo.png" alt="Pavle Vuković" class="profile-logo" />
           <h1>Pavle Vuković</h1>
           <p>FULL STACK JS DEVELOPER</p>
         </div>
@@ -63,14 +63,14 @@
           <h4>Languages</h4>
           <div>
             <span>Serbian</span>
-            <div>
-              <div style="width: 100%"></div>
+            <div class="language-bar">
+              <div class="language-progress" style="width: 100%"></div>
             </div>
           </div>
-          <div>
+          <div style="margin-top: 0.75rem">
             <span>English</span>
-            <div>
-              <div style="width: 90%"></div>
+            <div class="language-bar">
+              <div class="language-progress" style="width: 90%"></div>
             </div>
           </div>
         </section>
@@ -95,89 +95,128 @@
 
         <section>
           <h2>Experience</h2>
-
-          <div>
-            <div>
-              <h3>Full Stack JS Developer, d-one</h3>
-              <span>2024 - PRESENT</span>
+          <div class="experiences">
+            <div class="experience-card">
+              <div class="experience-header">
+                <div class="experience-title">
+                  <h3>Full Stack JS Developer</h3>
+                  <div class="experience-company">d-one</div>
+                </div>
+                <div class="experience-duration">2024 - PRESENT</div>
+              </div>
+              <ul class="experience-list">
+                <li>
+                  Part of a lean, highly expertised team in development of full
+                  stack applications with Next.js
+                </li>
+                <li>Used most modern technologies and systems</li>
+              </ul>
             </div>
-            <ul>
-              <li>
-                Part of a lean, highly expertised team in development of full
-                stack applications with Next.js
-              </li>
-              <li>Used most modern technologies and systems</li>
-            </ul>
-          </div>
 
-          <div>
-            <div>
-              <h3>Full Stack JS Developer, IT Centar, Niš</h3>
-              <span>2019 - 2024</span>
+            <div class="experience-card">
+              <div class="experience-header">
+                <div class="experience-title">
+                  <h3>Full Stack JS Developer</h3>
+                  <div class="experience-company">IT Centar, Niš</div>
+                </div>
+                <div class="experience-duration">2019 - 2024</div>
+              </div>
+              <ul class="experience-list">
+                <li>
+                  Led development projects for a range of client applications.
+                </li>
+                <li>
+                  Improved application performance and user experience by
+                  implementing modern technologies.
+                </li>
+                <li>
+                  Mentored junior developers and conducted code reviews to
+                  maintain high-quality standards.
+                </li>
+              </ul>
             </div>
-            <ul>
-              <li>
-                Led development projects for a range of client applications.
-              </li>
-              <li>
-                Improved application performance and user experience by
-                implementing modern technologies.
-              </li>
-              <li>
-                Mentored junior developers and conducted code reviews to
-                maintain high-quality standards.
-              </li>
-            </ul>
           </div>
         </section>
 
         <section>
           <h2>Projects</h2>
-          <div>
-            <div>
+          <div class="projects-grid">
+            <div class="project-card">
               <h3>City and Me</h3>
-              <p>Project Manager, Mobile App Developer</p>
-              <p>React Native</p>
+              <div class="role-tags">
+                <span class="tag">Project Manager</span>
+                <span class="tag">Mobile App Developer</span>
+              </div>
+              <div class="tech-tags">
+                <span class="tech-tag">React Native</span>
+              </div>
               <p>
                 Platform for users to communicate and make decisions together,
                 and earn and spend tokens by walking or riding a bike.
               </p>
             </div>
 
-            <div>
+            <div class="project-card">
               <h3>Viber Bot</h3>
-              <p>Project Manager, API Developer</p>
-              <p>ViberBot API, Express.js, MongoDB</p>
+              <div class="role-tags">
+                <span class="tag">Project Manager</span>
+                <span class="tag">API Developer</span>
+              </div>
+              <div class="tech-tags">
+                <span class="tech-tag">ViberBot API</span>
+                <span class="tech-tag">Express.js</span>
+                <span class="tech-tag">MongoDB</span>
+              </div>
               <p>
                 Platform for managing Viber Bot, such as City and Me Niš, City
                 and Me KG and FK Crvena Zvezda.
               </p>
             </div>
 
-            <div>
+            <div class="project-card">
               <h3>IPS Beauty Passport</h3>
-              <p>Backend Developer</p>
-              <p>Express.js, MongoDB</p>
+              <div class="role-tags">
+                <span class="tag">Backend Developer</span>
+              </div>
+              <div class="tech-tags">
+                <span class="tech-tag">Express.js</span>
+                <span class="tech-tag">MongoDB</span>
+              </div>
               <p>
                 Mobile application for managing clients and payments for Irena
                 Plastic Surgery ordination.
               </p>
             </div>
 
-            <div>
+            <div class="project-card">
               <h3>Sales Drive</h3>
-              <p>Mobile App Developer, PWA Developer</p>
-              <p>React Native, React.js, Next.js</p>
+              <div class="role-tags">
+                <span class="tag">Mobile App Developer</span>
+                <span class="tag">PWA Developer</span>
+              </div>
+              <div class="tech-tags">
+                <span class="tech-tag">React Native</span>
+                <span class="tech-tag">React.js</span>
+                <span class="tech-tag">Next.js</span>
+              </div>
               <p>
                 Platform focused on digitalization and optimization of sale
                 processes for companies.
               </p>
             </div>
 
-            <div>
+            <div class="project-card">
               <h3>IROAS</h3>
-              <p>Project Manager, Web App Developer, Backend Developer</p>
-              <p>React.js, Express.js, MongoDB</p>
+              <div class="role-tags">
+                <span class="tag">Project Manager</span>
+                <span class="tag">Web App Developer</span>
+                <span class="tag">Backend Developer</span>
+              </div>
+              <div class="tech-tags">
+                <span class="tech-tag">React.js</span>
+                <span class="tech-tag">Express.js</span>
+                <span class="tech-tag">MongoDB</span>
+              </div>
               <p>
                 Tool for having the S.P.A. (Aligned Power System) at your
                 fingertips and systematically transforming your limiting
@@ -185,10 +224,14 @@
               </p>
             </div>
 
-            <div>
+            <div class="project-card">
               <h3>ProOxy</h3>
-              <p>Mobile App Developer</p>
-              <p>React Native</p>
+              <div class="role-tags">
+                <span class="tag">Mobile App Developer</span>
+              </div>
+              <div class="tech-tags">
+                <span class="tech-tag">React Native</span>
+              </div>
               <p>
                 Founded to promote the idea of sustainable CO2 compensation and
                 to focus its main business activities on its own transparent
@@ -196,23 +239,33 @@
               </p>
             </div>
 
-            <div>
+            <div class="project-card">
               <h3>Koshko</h3>
-              <p>Mobile App Developer</p>
-              <p>React Native</p>
+              <div class="role-tags">
+                <span class="tag">Mobile App Developer</span>
+              </div>
+              <div class="tech-tags">
+                <span class="tech-tag">React Native</span>
+              </div>
               <p>
                 A mobile app that tracks the number of shots made in basketball,
                 recorded by a smart basketball.
               </p>
             </div>
 
-            <div>
+            <div class="project-card">
               <h3>Reshi</h3>
-              <p>
-                Project Manager, Web App Developer, CMS Developer, Backend
-                Developer
-              </p>
-              <p>Next.js, Express.js, MongoDB</p>
+              <div class="role-tags">
+                <span class="tag">Project Manager</span>
+                <span class="tag">Web App Developer</span>
+                <span class="tag">CMS Developer</span>
+                <span class="tag">Backend Developer</span>
+              </div>
+              <div class="tech-tags">
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">Express.js</span>
+                <span class="tech-tag">MongoDB</span>
+              </div>
               <p>
                 A web application that allows users to efficiently and
                 conveniently request professional assistance for household
@@ -220,23 +273,38 @@
               </p>
             </div>
 
-            <div>
+            <div class="project-card">
               <h3>CIShrana</h3>
-              <p>
-                Project Manager, Mobile App Developer, CMS Developer, Backend
-                Developer
-              </p>
-              <p>Expo, React Native, Next.js, Express.js, MySQL, Drizzle ORM</p>
+              <div class="role-tags">
+                <span class="tag">Project Manager</span>
+                <span class="tag">Mobile App Developer</span>
+                <span class="tag">CMS Developer</span>
+                <span class="tag">Backend Developer</span>
+              </div>
+              <div class="tech-tags">
+                <span class="tech-tag">Expo</span>
+                <span class="tech-tag">React Native</span>
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">Express.js</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Drizzle ORM</span>
+              </div>
               <p>
                 A mobile app for tracking daily food intake, including
                 micronutrients, macronutrients, and calories.
               </p>
             </div>
 
-            <div>
+            <div class="project-card">
               <h3>Elevate</h3>
-              <p>Full Stack Developer</p>
-              <p>Next.js, tRPC, DrizzleORM</p>
+              <div class="role-tags">
+                <span class="tag">Full Stack Developer</span>
+              </div>
+              <div class="tech-tags">
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">tRPC</span>
+                <span class="tech-tag">DrizzleORM</span>
+              </div>
               <p>
                 Platform that let's organizations search, view and unlock
                 construction worker's profiles, hire them, and then manage
