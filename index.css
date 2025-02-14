@@ -9,20 +9,85 @@
 
 /* Variables for consistent styling */
 :root {
+  /* Common variables */
+  --transition: all 0.3s ease;
+  --accent-color: #b8860b;
+  --accent-gradient: linear-gradient(135deg, #daa520 0%, #b8860b 100%);
+
+  /* Light theme (default) */
   --primary-color: #000000;
   --secondary-color: #1d1d1f;
   --text-color: #1d1d1f;
   --light-text: #86868b;
   --background-color: #ffffff;
   --sidebar-background: #f8f8f8;
-  --accent-color: #b8860b; /* Dark golden color */
-  --accent-gradient: linear-gradient(
-    135deg,
-    #daa520 0%,
-    #b8860b 100%
-  ); /* Golden gradient */
-  --transition: all 0.3s ease;
   --subtle-border: rgba(0, 0, 0, 0.08);
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #ffffff;
+    --secondary-color: #f5f5f7;
+    --text-color: #f5f5f7;
+    --light-text: #a1a1a6;
+    --background-color: #000000;
+    --sidebar-background: #1c1c1e;
+    --subtle-border: rgba(255, 255, 255, 0.12);
+  }
+
+  /* Enhance borders for dark mode */
+  .sidebar {
+    border-right-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .project-card,
+  .experience-card,
+  .card,
+  .tag,
+  .experience-duration {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .sidebar section {
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+  }
+
+  /* Add subtle glow on hover */
+  .project-card:hover,
+  .experience-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+
+  /* Adjust tag backgrounds for dark mode */
+  .tag {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  /* Adjust duration tag background for dark mode */
+  .experience-duration {
+    background-color: rgba(255, 255, 255, 0.06);
+  }
+
+  /* Adjust logo border for dark mode */
+  .profile-logo {
+    border-color: var(--subtle-border);
+  }
+
+  /* Adjust scrollbar colors for dark mode */
+  .sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Adjust link hover color for dark mode */
+  a:hover {
+    color: #ffd700; /* Brighter gold for dark mode */
+  }
+
+  .sidebar:hover {
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
 }
 
 /* Typography */
@@ -48,7 +113,7 @@ body {
   width: 300px;
   position: fixed;
   height: 100vh;
-  overflow-y: auto;
+  overflow-y: overlay;
   background: var(--sidebar-background);
   padding: 2.5rem 2rem;
   border-right: 1px solid var(--subtle-border);
@@ -56,6 +121,11 @@ body {
 
 .sidebar::-webkit-scrollbar {
   width: 8px;
+  display: none;
+}
+
+.sidebar:hover::-webkit-scrollbar {
+  display: block;
 }
 
 .sidebar::-webkit-scrollbar-track {
@@ -65,6 +135,16 @@ body {
 .sidebar::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+}
+
+/* For Firefox */
+.sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.sidebar:hover {
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
 }
 
 /* Main content area */
