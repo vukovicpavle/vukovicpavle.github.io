@@ -71,11 +71,6 @@
     background-color: rgba(255, 255, 255, 0.06);
   }
 
-  /* Adjust logo border for dark mode */
-  .profile-logo {
-    border-color: var(--subtle-border);
-  }
-
   /* Adjust scrollbar colors for dark mode */
   .sidebar::-webkit-scrollbar-thumb {
     background-color: rgba(255, 255, 255, 0.2);
@@ -392,15 +387,29 @@ ol ol {
 .profile-header {
   text-align: center;
   margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile-logo {
   width: 100px;
   height: 100px;
   border-radius: 50px;
-  object-fit: cover;
   margin-bottom: 1.25rem;
-  border: 2px solid var(--subtle-border);
+  background-image: url("img/logo.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0) saturate(100%) invert(45%) sepia(19%) saturate(1966%)
+    hue-rotate(16deg) brightness(92%) contrast(96%);
+}
+
+/* Dark theme adjustment */
+@media (prefers-color-scheme: dark) {
+  .profile-logo {
+    opacity: 1;
+  }
 }
 
 .profile-header h1 {
@@ -419,6 +428,7 @@ ol ol {
   margin-bottom: 0;
   text-transform: uppercase;
   opacity: 0.6;
+  font-size: 0.7rem !important;
 }
 
 /* Sidebar sections */
@@ -435,8 +445,9 @@ ol ol {
 }
 
 .sidebar h4 {
-  font-size: 0.875rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
+  font-weight: 300;
   letter-spacing: 0.05em;
   margin-bottom: 1rem;
   color: var(--light-text);
