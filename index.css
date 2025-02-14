@@ -1,89 +1,335 @@
-body {
-  background-color: #01121e;
-  color: #ebecce;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+:root {
+  --primary-color: #000000;
+  --secondary-color: #1d1d1f;
+  --accent-color: #2997ff;
+  --text-color: #1d1d1f;
+  --text-light: #86868b;
+  --sidebar-width: 300px;
+  --spacing: 20px;
+  --transition: all 0.3s ease;
+}
+
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: #ffffff;
+}
+
+.container {
   display: flex;
-  flex-direction: column;
   min-height: 100vh;
-  justify-content: center;
-  align-items: center;
 }
 
-.logo {
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: 1rem;
+.sidebar {
+  width: var(--sidebar-width);
+  background: linear-gradient(145deg, #000000, #111827);
+  color: white;
+  padding: calc(var(--spacing) * 2);
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+  transition: var(--transition);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
 }
 
-.hello {
-  font-size: 1.5rem;
+.main-content {
+  margin-left: var(--sidebar-width);
+  padding: calc(var(--spacing) * 2);
+  flex: 1;
+  max-width: 900px;
 }
 
-.wave {
-  animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
-  animation-duration: 2.5s;        /* Change to speed up or slow down */
-  animation-iteration-count: infinite;  /* Never stop waving :) */
-  transform-origin: 70% 70%;       /* Pivot around the bottom-left palm */
+.profile {
+  text-align: center;
+  margin-bottom: calc(var(--spacing) * 3);
+  position: relative;
+}
+
+.profile::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-color),
+    transparent
+  );
+}
+
+.profile-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  margin-bottom: var(--spacing);
+  object-fit: cover;
+  border: 3px solid transparent;
+  background: linear-gradient(45deg, var(--accent-color), #64ffda) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile-img:hover {
+  transform: scale(1.05) rotate(5deg);
+}
+
+.profile h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  background: linear-gradient(120deg, #fff, #a5f3fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+
+.title {
+  font-size: 0.9em;
+  color: var(--accent-color);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  position: relative;
   display: inline-block;
-  font-size: 2rem;
-  margin-left: 0.5rem;
 }
 
-.thanks {
-  font-size: 2rem;
+.title::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease;
 }
 
-.message {
-  font-size: 1rem;
-  font-family: "Courier New", Courier, monospace;
-  /* margin-top: 3rem; */
+.title:hover::after {
+  width: 100%;
 }
 
-.link {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+.sidebar section {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-a {
-  color: #bec249;
+.sidebar section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar h2 {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 15px;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.sidebar h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--accent-color);
+}
+
+.sidebar a {
+  color: #fff;
   text-decoration: none;
-  margin-left: 0.2rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+  padding: 2px 0;
 }
 
-/* Animations */
-
-/* Wave */
-@keyframes wave-animation {
-  0% { transform: rotate( 0.0deg) }
- 10% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
- 20% { transform: rotate(-8.0deg) }
- 30% { transform: rotate(14.0deg) }
- 40% { transform: rotate(-4.0deg) }
- 50% { transform: rotate(10.0deg) }
- 60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
-100% { transform: rotate( 0.0deg) }
+.sidebar a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease;
 }
 
-/* Point left */
-@keyframes point-left {
+.sidebar a:hover {
+  color: var(--accent-color);
+  transform: translateX(5px);
+}
+
+.sidebar a:hover::after {
+  width: 100%;
+}
+
+.skills ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skills li {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.skills li:hover {
+  background: rgba(41, 151, 255, 0.1);
+  transform: translateY(-2px);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.language {
+  margin-bottom: 15px;
+}
+
+.language span {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  color: #fff;
+}
+
+.level-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.level {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-color), #64ffda);
+  border-radius: 3px;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.level::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
   0% {
-    transform: translateX(0px);
-  }
-  50% {
-    transform: translateX(-5px);
+    transform: translateX(-100%);
   }
   100% {
-    transform: translateX(0px);
+    transform: translateX(100%);
   }
 }
-.point-left {
-  animation-name: point-left;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  margin-left: 0.7rem;
+
+/* Custom Scrollbar */
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: calc(var(--spacing) * 1.5);
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: var(--spacing);
+  }
+
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .job,
+  .project {
+    padding: 15px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #000;
+    color: #f5f5f7;
+  }
+
+  .job,
+  .project {
+    background: var(--secondary-color);
+  }
+
+  .job-header h3,
+  .project h3 {
+    color: #f5f5f7;
+  }
+
+  .date {
+    color: #86868b;
+  }
 }
