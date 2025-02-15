@@ -315,19 +315,45 @@ ol ol {
 }
 
 /* Language proficiency bars */
+.language-section span {
+  font-size: 0.8125rem;
+  color: var(--accent-color);
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 450;
+}
+
 .language-bar {
-  height: 4px;
-  background: var(--subtle-border);
-  border-radius: 2px;
+  height: 3px;
+  background: rgba(184, 134, 11, 0.04);
+  border: 1px solid rgba(184, 134, 11, 0.1);
+  border-radius: 3px;
   overflow: hidden;
-  margin-top: 0.25rem;
+  margin-bottom: 1rem;
 }
 
 .language-progress {
   height: 100%;
   background: var(--accent-gradient);
   border-radius: 2px;
-  transition: var(--transition);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: progressIn 1s ease forwards;
+}
+
+@keyframes progressIn {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+  .language-bar {
+    background: rgba(184, 134, 11, 0.06);
+    border-color: rgba(184, 134, 11, 0.15);
+  }
 }
 
 /* Responsive design */
