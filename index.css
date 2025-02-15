@@ -314,45 +314,88 @@ ol ol {
   margin-bottom: 0.75rem;
 }
 
-/* Language proficiency bars */
+/* Language section styling */
 .language-section span {
   font-size: 0.8125rem;
   color: var(--accent-color);
   display: block;
   margin-bottom: 0.35rem;
   font-weight: 450;
+  opacity: 0.9;
+  transition: var(--transition);
+}
+
+.language-section div:hover span {
+  opacity: 1;
 }
 
 .language-bar {
-  height: 3px;
-  background: rgba(184, 134, 11, 0.04);
-  border: 1px solid rgba(184, 134, 11, 0.1);
-  border-radius: 3px;
+  height: 4px;
+  background: rgba(184, 134, 11, 0.03);
+  border: 1px solid rgba(184, 134, 11, 0.08);
+  border-radius: 4px;
   overflow: hidden;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  transition: var(--transition);
+}
+
+.language-section div:hover .language-bar {
+  background: rgba(184, 134, 11, 0.05);
+  border-color: rgba(184, 134, 11, 0.12);
 }
 
 .language-progress {
   height: 100%;
   background: var(--accent-gradient);
   border-radius: 2px;
-  transition: transform 0.3s ease;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   transform-origin: left;
   transform: scaleX(0);
-  animation: progressIn 1s ease forwards;
+  animation: progressIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.2s;
+}
+
+.language-section div:last-child .language-bar {
+  margin-bottom: 0;
 }
 
 @keyframes progressIn {
-  to {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  100% {
     transform: scaleX(1);
+    opacity: 1;
   }
 }
 
 /* Dark theme adjustments */
 @media (prefers-color-scheme: dark) {
   .language-bar {
-    background: rgba(184, 134, 11, 0.06);
+    background: rgba(184, 134, 11, 0.04);
+    border-color: rgba(184, 134, 11, 0.1);
+  }
+
+  .language-section div:hover .language-bar {
+    background: rgba(184, 134, 11, 0.08);
     border-color: rgba(184, 134, 11, 0.15);
+  }
+
+  .language-section span {
+    opacity: 0.8;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .language-bar {
+    height: 3px;
+    margin-bottom: 1rem;
+  }
+
+  .language-section span {
+    font-size: 0.75rem;
   }
 }
 
